@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "166857915243",
+    "project_id": "susastho-app",
+    "storage_bucket": "susastho-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166857915243:android:8b6ba37156cde28588ea2e",
+        "android_client_info": {
+          "package_name": "com.example.susastho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166857915243-cok7gs432trbjdu9gbh7msu0ddb8i28c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrTzhXqjESBsdBrjV0wAsZEs-6RoCklfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166857915243-cok7gs432trbjdu9gbh7msu0ddb8i28c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
