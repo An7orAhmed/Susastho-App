@@ -52,6 +52,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Susastho - সুস্বাস্থ্য',
+      scaffoldMessengerKey: scafKey,
+      debugShowCheckedModeBanner: false,
       initialRoute: isLoggedIn ? '/' : '/login',
       routes: {
         '/': (context) => isAdmin ? AdminHome() : PatientHome(),
