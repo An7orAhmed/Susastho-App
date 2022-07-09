@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     if (auth.currentUser != null) isLoggedIn = true;
     var doc = db.collection("User").doc(auth.currentUser?.uid).get();
     doc.then((data) {
-      var user = User.fromMap(data.data()!);
+      var user = AppUser.fromMap(data.data()!);
       if (user.type == "ADMIN") isAdmin = true;
     });
   }

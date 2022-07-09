@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class User {
+class AppUser {
   String name;
   String address;
   String phone;
@@ -8,8 +8,7 @@ class User {
   int age;
   String blood;
   String type;
-
-  User({
+  AppUser({
     required this.name,
     required this.address,
     required this.phone,
@@ -19,7 +18,7 @@ class User {
     required this.type,
   });
 
-  User copyWith({
+  AppUser copyWith({
     String? name,
     String? address,
     String? phone,
@@ -28,7 +27,7 @@ class User {
     String? blood,
     String? type,
   }) {
-    return User(
+    return AppUser(
       name: name ?? this.name,
       address: address ?? this.address,
       phone: phone ?? this.phone,
@@ -51,8 +50,8 @@ class User {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
+  factory AppUser.fromMap(Map<String, dynamic> map) {
+    return AppUser(
       name: map['name'] as String,
       address: map['address'] as String,
       phone: map['phone'] as String,
@@ -65,18 +64,18 @@ class User {
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AppUser.fromJson(String source) => AppUser.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'User(name: $name, address: $address, phone: $phone, nid: $nid, age: $age, blood: $blood, type: $type)';
+    return 'AppUser(name: $name, address: $address, phone: $phone, nid: $nid, age: $age, blood: $blood, type: $type)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is User &&
+    return other is AppUser &&
         other.name == name &&
         other.address == address &&
         other.phone == phone &&
