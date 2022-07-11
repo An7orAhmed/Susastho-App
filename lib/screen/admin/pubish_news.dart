@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:susastho/constants.dart';
@@ -8,15 +9,19 @@ class PublishNews extends StatelessWidget {
   PublishNews({Key? key}) : super(key: key);
 
   final _controller = QuillController.basic();
+  var heading = TextEditingController();
 
   Future<void> _publishNews(context) async {
-    String post = _controller.document.toDelta().toJson().toString();
-    if (_controller.document.isEmpty()) {
+    String post = jsonEncode(_controller.document.toDelta().toJson());
+    if (_controller.document.isEmpty() || heading.text.isEmpty) {
       scafKey.currentState!.showSnackBar(snackBar(Colors.red, Colors.white, Icons.error, 'There is no content!'));
       return;
     }
     var newPublish = NewsModel(
-        publishedBy: auth.currentUser?.email ?? "Admin", publishedDate: DateTime.now().toString(), content: post);
+        headline: heading.text,
+        publishedBy: auth.currentUser?.email ?? "Admin",
+        publishedDate: DateTime.now().toString().split('.')[0],
+        content: post);
     publishedNews.add(newPublish);
     var doc = await db.collection("Data").doc("News").get();
     if (doc.data() != null) {
@@ -41,6 +46,12 @@ class PublishNews extends StatelessWidget {
           children: [
             QuillToolbar.basic(controller: _controller, toolbarIconAlignment: WrapAlignment.spaceBetween),
             const SizedBox(height: 10),
+            TextField(
+              controller: heading,
+              decoration: const InputDecoration(
+                  hintText: "Enter news headline", labelText: "News headline", border: OutlineInputBorder()),
+            ),
+            const SizedBox(height: 10),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(5),
@@ -53,7 +64,7 @@ class PublishNews extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.center,
               child: OutlinedButton(
                 onPressed: () => _publishNews(context),
                 child: const Padding(

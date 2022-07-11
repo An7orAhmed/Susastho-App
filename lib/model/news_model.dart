@@ -4,21 +4,25 @@ import 'package:flutter/foundation.dart';
 class NewsModel {
   String publishedBy;
   String publishedDate;
+  String headline;
   String content;
   NewsModel({
     required this.publishedBy,
     required this.publishedDate,
+    required this.headline,
     required this.content,
   });
 
   NewsModel copyWith({
     String? publishedBy,
     String? publishedDate,
+    String? headline,
     String? content,
   }) {
     return NewsModel(
       publishedBy: publishedBy ?? this.publishedBy,
       publishedDate: publishedDate ?? this.publishedDate,
+      headline: headline ?? this.headline,
       content: content ?? this.content,
     );
   }
@@ -27,6 +31,7 @@ class NewsModel {
     return <String, dynamic>{
       'publishedBy': publishedBy,
       'publishedDate': publishedDate,
+      'headline': headline,
       'content': content,
     };
   }
@@ -35,6 +40,7 @@ class NewsModel {
     return NewsModel(
       publishedBy: map['publishedBy'] as String,
       publishedDate: map['publishedDate'] as String,
+      headline: map['headline'] as String,
       content: map['content'] as String,
     );
   }
@@ -44,7 +50,9 @@ class NewsModel {
   factory NewsModel.fromJson(String source) => NewsModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'NewsModel(publishedBy: $publishedBy, publishedDate: $publishedDate, content: $content)';
+  String toString() {
+    return 'NewsModel(publishedBy: $publishedBy, publishedDate: $publishedDate, headline: $headline, content: $content)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -53,11 +61,14 @@ class NewsModel {
     return other is NewsModel &&
         other.publishedBy == publishedBy &&
         other.publishedDate == publishedDate &&
+        other.headline == headline &&
         other.content == content;
   }
 
   @override
-  int get hashCode => publishedBy.hashCode ^ publishedDate.hashCode ^ content.hashCode;
+  int get hashCode {
+    return publishedBy.hashCode ^ publishedDate.hashCode ^ headline.hashCode ^ content.hashCode;
+  }
 }
 
 class PublishedNews {

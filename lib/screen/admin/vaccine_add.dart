@@ -107,7 +107,7 @@ class _VaccineAddState extends State<VaccineAdd> {
             ),
             const SizedBox(height: 20),
             Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.center,
               child: OutlinedButton(
                 onPressed: () => _addVaccine(context),
                 child: const Padding(

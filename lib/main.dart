@@ -65,7 +65,6 @@ class _MyAppState extends State<MyApp> {
                 '/registration': (context) => Registration(),
                 '/status': (context) => Status(),
                 '/news': (context) => News(),
-                '/article': (context) => Article(),
                 '/adminHome': (context) => AdminHome(),
                 '/patientList': (context) => PatientList(),
                 '/vaccineAdd': (context) => VaccineAdd(),
