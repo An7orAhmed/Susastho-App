@@ -24,14 +24,11 @@ class Login extends StatelessWidget {
 
     try {
       scafKey.currentState!.showSnackBar(snackBar(Colors.black, Colors.white, Icons.pending, 'Trying to login...'));
-      auth.signInWithEmailAndPassword(email: email.text, password: pass.text).then((credential) {
-        var uid = credential.user!.uid;
-        var doc = db.collection("User").doc(uid).get();
-        doc.then((data) {
-          var user = AppUser.fromMap(data.data()!);
-          if (user.type == "ADMIN") isAdmin = true;
-          Navigator.of(context).pushNamedAndRemoveUntil(isAdmin ? '/adminHome' : '/patientHome', (route) => false);
-        });
+      var credential = await auth.signInWithEmailAndPassword(email: email.text, password: pass.text);
+      db.collection("User").doc(credential.user?.email).get().then((doc) {
+        var user = AppUser.fromMap(doc.data()!);
+        user.type == "ADMIN" ? isAdmin = true : isAdmin = false;
+        Navigator.of(context).pushNamedAndRemoveUntil(isAdmin ? '/adminHome' : '/patientHome', (route) => false);
       });
     } on FirebaseAuthException catch (e) {
       scafKey.currentState!.showSnackBar(snackBar(Colors.red, Colors.white, Icons.error, e.code));
@@ -42,55 +39,53 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/logo.png', scale: 1.5),
-                const SizedBox(height: 10),
-                const Text('Susastho - সুস্বাস্থ্য', style: TextStyle(fontSize: 24)),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: email,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    hintText: 'E-mail',
-                    prefixIcon: const Icon(Icons.email),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/logo.png', scale: 1.5),
+              const SizedBox(height: 10),
+              const Text('Susastho - সুস্বাস্থ্য', style: TextStyle(fontSize: 24)),
+              const SizedBox(height: 10),
+              TextField(
+                controller: email,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'E-mail',
+                  prefixIcon: const Icon(Icons.email),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(height: 20),
-                TextField(
-                  controller: pass,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    prefixIcon: const Icon(Icons.password),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: pass,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  prefixIcon: const Icon(Icons.password),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                const SizedBox(height: 20),
-                OutlinedButton(
-                  onPressed: () => _login(context),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                    child: Text('Login', style: TextStyle(fontSize: 20)),
-                  ),
+              ),
+              const SizedBox(height: 20),
+              OutlinedButton(
+                onPressed: () => _login(context),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  child: Text('Login', style: TextStyle(fontSize: 20)),
                 ),
-                const SizedBox(height: 10),
-                TextButton(
-                    onPressed: () => Navigator.of(context).pushNamed('/signup'),
-                    child: const Text('Not registered? Signup here'))
-              ],
-            ),
+              ),
+              const SizedBox(height: 10),
+              TextButton(
+                  onPressed: () => Navigator.of(context).pushNamed('/signup'),
+                  child: const Text('Not registered? Signup here'))
+            ],
           ),
         ),
       ),

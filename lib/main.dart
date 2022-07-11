@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:susastho/screen/admin/admin_home.dart';
-import 'package:susastho/screen/admin/patients_details.dart';
 import 'package:susastho/screen/admin/patients_list.dart';
 import 'package:susastho/screen/admin/pubish_news.dart';
 import 'package:susastho/screen/admin/vaccine_add.dart';
@@ -36,41 +35,47 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _init();
+    if (auth.currentUser != null) isLoggedIn = true;
   }
 
-  _init() {
-    if (auth.currentUser != null) isLoggedIn = true;
-    var doc = db.collection("User").doc(auth.currentUser?.uid).get();
-    doc.then((data) {
-      var user = AppUser.fromMap(data.data()!);
-      if (user.type == "ADMIN") isAdmin = true;
-    });
+  Future<void> checkAdmin() async {
+    var doc = await db.collection("User").doc(auth.currentUser?.email).get();
+    var user = AppUser.fromMap(doc.data()!);
+    if (user.type == "ADMIN") {
+      isAdmin = true;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Susastho - সুস্বাস্থ্য',
-      scaffoldMessengerKey: scafKey,
-      debugShowCheckedModeBanner: false,
-      initialRoute: isLoggedIn ? '/' : '/login',
-      routes: {
-        '/': (context) => isAdmin ? AdminHome() : PatientHome(),
-        '/login': (context) => Login(),
-        '/signup': (context) => Signup(),
-        '/patientHome': (context) => PatientHome(),
-        '/registration': (context) => Registration(),
-        '/status': (context) => Status(),
-        '/news': (context) => News(),
-        '/article': (context) => Article(),
-        '/adminHome': (context) => AdminHome(),
-        '/patientList': (context) => PatientList(),
-        '/patientDetails': (context) => PatientDetails(),
-        '/vaccineAdd': (context) => VaccineAdd(),
-        '/vaccineList': (context) => VaccineList(),
-        '/publishNews': (context) => PublishNews(),
-      },
-    );
+    return FutureBuilder(
+        future: checkAdmin(),
+        builder: (context, data) {
+          if (data.connectionState == ConnectionState.done) {
+            return MaterialApp(
+              title: 'Susastho - সুস্বাস্থ্য',
+              scaffoldMessengerKey: scafKey,
+              debugShowCheckedModeBanner: false,
+              initialRoute: isLoggedIn ? '/' : '/login',
+              routes: {
+                '/': (context) => isAdmin ? AdminHome() : PatientHome(),
+                '/login': (context) => Login(),
+                '/signup': (context) => Signup(),
+                '/patientHome': (context) => PatientHome(),
+                '/registration': (context) => Registration(),
+                '/status': (context) => Status(),
+                '/news': (context) => News(),
+                '/article': (context) => Article(),
+                '/adminHome': (context) => AdminHome(),
+                '/patientList': (context) => PatientList(),
+                '/vaccineAdd': (context) => VaccineAdd(),
+                '/vaccineList': (context) => VaccineList(),
+                '/publishNews': (context) => PublishNews(),
+              },
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        });
   }
 }

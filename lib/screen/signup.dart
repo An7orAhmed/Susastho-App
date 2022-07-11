@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:susastho/constants.dart';
 import 'package:susastho/model/user.dart';
+import 'package:susastho/model/vaccine_taken.dart';
 import 'package:susastho/widgets/utilities.dart';
 
 class Signup extends StatelessWidget {
@@ -45,26 +46,23 @@ class Signup extends StatelessWidget {
 
     try {
       scafKey.currentState!.showSnackBar(snackBar(Colors.black, Colors.white, Icons.error, 'Signing up...'));
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email.text,
         password: pass.text,
-      )
-          .then((credential) {
-        var uid = credential.user!.uid;
-        var user = AppUser(
-            name: name.text,
-            address: address.text,
-            phone: phone.text,
-            nid: nid.text,
-            age: int.parse(age.text),
-            blood: blood.text,
-            type: 'USER');
-        db.collection('User').doc(uid).set(user.toMap()).then((value) {
-          auth.signInWithEmailAndPassword(email: email.text, password: pass.text);
-          Navigator.of(context).pushNamedAndRemoveUntil('/patientHome', (route) => false);
-        });
-      });
+      );
+      var user = AppUser(
+          name: name.text,
+          email: email.text,
+          address: address.text,
+          phone: phone.text,
+          nid: nid.text,
+          age: int.parse(age.text),
+          blood: blood.text,
+          vaccineTaken: List<VaccineTaken>.empty(growable: true),
+          type: 'USER');
+      await db.collection('User').doc(email.text).set(user.toMap());
+      await auth.signInWithEmailAndPassword(email: email.text, password: pass.text);
+      Navigator.of(context).pushNamedAndRemoveUntil('/patientHome', (route) => false);
     } on FirebaseAuthException catch (e) {
       scafKey.currentState!.showSnackBar(snackBar(Colors.red, Colors.white, Icons.error, e.code));
     } catch (e) {
@@ -74,9 +72,9 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),

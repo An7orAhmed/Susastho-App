@@ -19,100 +19,102 @@ class AdminHome extends StatelessWidget {
         title: const Text("Susastho - সুস্বাস্থ্য"),
         actions: [IconButton(onPressed: () => _logout(context), icon: const Icon(Icons.logout))],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          children: [
-            ListTile(
-              leading: Icon(Icons.person, size: 50, color: Colors.blue[400]),
-              title: const Text("Welcome,"),
-              subtitle: Text(auth.currentUser?.email ?? "None"),
-            ),
-            const SizedBox(height: 10),
-            SizedBox(
-              height: 120,
-              width: double.infinity,
-              child: Card(
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                color: Colors.grey[100],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: InkWell(
-                  splashColor: Colors.blue[100],
-                  onTap: () => Navigator.of(context).pushNamed('/patientList'),
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 15),
-                      Icon(Icons.personal_injury, size: 80, color: Colors.blue),
-                      SizedBox(width: 45),
-                      Text(
-                        "Patients List",
-                        style: TextStyle(fontSize: 20),
-                      )
-                    ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.person, size: 50, color: Colors.blue[400]),
+                title: const Text("Welcome,"),
+                subtitle: Text(auth.currentUser?.email ?? "None"),
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 120,
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.grey[100],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.blue[100],
+                    onTap: () => Navigator.of(context).pushNamed('/patientList'),
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 15),
+                        Icon(Icons.personal_injury, size: 80, color: Colors.blue),
+                        SizedBox(width: 45),
+                        Text(
+                          "Patient List",
+                          style: TextStyle(fontSize: 20),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              height: 120,
-              width: double.infinity,
-              child: Card(
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                color: Colors.grey[100],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: InkWell(
-                  splashColor: Colors.blue[100],
-                  onTap: () => Navigator.of(context).pushNamed('/vaccineList'),
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 15),
-                      Icon(Icons.vaccines, size: 80, color: Colors.blueGrey),
-                      SizedBox(width: 45),
-                      Text(
-                        "Vaccines List",
-                        style: TextStyle(fontSize: 20),
-                      )
-                    ],
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 120,
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.grey[100],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.blue[100],
+                    onTap: () => Navigator.of(context).pushNamed('/vaccineList'),
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 15),
+                        Icon(Icons.vaccines, size: 80, color: Colors.blueGrey),
+                        SizedBox(width: 45),
+                        Text(
+                          "Vaccine List",
+                          style: TextStyle(fontSize: 20),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            SizedBox(
-              height: 120,
-              width: double.infinity,
-              child: Card(
-                elevation: 3,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                color: Colors.grey[100],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-                child: InkWell(
-                  splashColor: Colors.blue[100],
-                  onTap: () => Navigator.of(context).pushNamed('/publishNews'),
-                  child: Row(
-                    children: const [
-                      SizedBox(width: 15),
-                      Icon(Icons.newspaper, size: 80, color: Colors.deepPurple),
-                      SizedBox(width: 45),
-                      Text(
-                        "Publish News",
-                        style: TextStyle(fontSize: 20),
-                      )
-                    ],
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 120,
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.grey[100],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.blue[100],
+                    onTap: () => Navigator.of(context).pushNamed('/publishNews'),
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 15),
+                        Icon(Icons.newspaper, size: 80, color: Colors.deepPurple),
+                        SizedBox(width: 45),
+                        Text(
+                          "Publish News",
+                          style: TextStyle(fontSize: 20),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

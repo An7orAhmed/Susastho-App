@@ -5,6 +5,17 @@ class Registration extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text("Registration"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }

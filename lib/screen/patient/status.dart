@@ -5,6 +5,17 @@ class Status extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text("Vaccine Status"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }
