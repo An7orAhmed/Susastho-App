@@ -6,7 +6,6 @@ import 'package:susastho/screen/admin/pubish_news.dart';
 import 'package:susastho/screen/admin/vaccine_add.dart';
 import 'package:susastho/screen/admin/vaccine_list.dart';
 import 'package:susastho/screen/login.dart';
-import 'package:susastho/screen/patient/article.dart';
 import 'package:susastho/screen/patient/news.dart';
 import 'package:susastho/screen/patient/patient_home.dart';
 import 'package:susastho/screen/patient/registration.dart';
