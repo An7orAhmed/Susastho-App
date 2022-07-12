@@ -4,7 +4,7 @@ import 'package:susastho/model/vaccine.dart';
 import 'package:susastho/widgets/utilities.dart';
 
 class VaccineAdd extends StatefulWidget {
-  VaccineAdd({Key? key}) : super(key: key);
+  const VaccineAdd({Key? key}) : super(key: key);
 
   @override
   State<VaccineAdd> createState() => _VaccineAddState();
@@ -42,81 +42,83 @@ class _VaccineAddState extends State<VaccineAdd> {
       appBar: AppBar(
         title: const Text("Add New Vaccine"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Column(
-          children: [
-            TextField(
-              controller: vaccineName,
-              decoration: const InputDecoration(
-                  hintText: "Enter Vaccine Name", labelText: "Vaccine Name", border: OutlineInputBorder()),
-            ),
-            const SizedBox(height: 20),
-            Card(
-              elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: ListTile(
-                  title: const Text("Minimum Age"),
-                  subtitle: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            minAge--;
-                          });
-                        },
-                        icon: const Icon(Icons.do_not_disturb_on)),
-                    Text("$minAge"),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            minAge++;
-                          });
-                        },
-                        icon: const Icon(Icons.add_circle)),
-                  ]),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+          child: Column(
+            children: [
+              TextField(
+                controller: vaccineName,
+                decoration: const InputDecoration(
+                    hintText: "Enter Vaccine Name", labelText: "Vaccine Name", border: OutlineInputBorder()),
+              ),
+              const SizedBox(height: 20),
+              Card(
+                elevation: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 10),
+                  child: ListTile(
+                    title: const Text("Minimum Age"),
+                    subtitle: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              minAge--;
+                            });
+                          },
+                          icon: const Icon(Icons.do_not_disturb_on)),
+                      Text("$minAge"),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              minAge++;
+                            });
+                          },
+                          icon: const Icon(Icons.add_circle)),
+                    ]),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Card(
-              elevation: 2,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                child: ListTile(
-                  title: const Text("Maximum Age"),
-                  subtitle: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            maxAge--;
-                          });
-                        },
-                        icon: const Icon(Icons.do_not_disturb_on)),
-                    Text("$maxAge"),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            maxAge++;
-                          });
-                        },
-                        icon: const Icon(Icons.add_circle)),
-                  ]),
+              const SizedBox(height: 20),
+              Card(
+                elevation: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 10),
+                  child: ListTile(
+                    title: const Text("Maximum Age"),
+                    subtitle: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              maxAge--;
+                            });
+                          },
+                          icon: const Icon(Icons.do_not_disturb_on)),
+                      Text("$maxAge"),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              maxAge++;
+                            });
+                          },
+                          icon: const Icon(Icons.add_circle)),
+                    ]),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Align(
-              alignment: Alignment.center,
-              child: OutlinedButton(
-                onPressed: () => _addVaccine(context),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  child: Text("Add"),
+              const SizedBox(height: 20),
+              Align(
+                alignment: Alignment.center,
+                child: OutlinedButton(
+                  onPressed: () => _addVaccine(context),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                    child: Text("Add"),
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

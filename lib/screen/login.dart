@@ -7,8 +7,8 @@ import 'package:susastho/widgets/utilities.dart';
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
-  var email = TextEditingController();
-  var pass = TextEditingController();
+  final email = TextEditingController();
+  final pass = TextEditingController();
 
   Future<void> _login(context) async {
     if (email.text.isEmpty) {
@@ -41,51 +41,53 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/logo.png', scale: 1.5),
-              const SizedBox(height: 10),
-              const Text('Susastho - সুস্বাস্থ্য', style: TextStyle(fontSize: 24)),
-              const SizedBox(height: 10),
-              TextField(
-                controller: email,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  hintText: 'E-mail',
-                  prefixIcon: const Icon(Icons.email),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/logo.png', scale: 1.5),
+                const SizedBox(height: 10),
+                const Text('Susastho - সুস্বাস্থ্য', style: TextStyle(fontSize: 24)),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: email,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    hintText: 'E-mail',
+                    prefixIcon: const Icon(Icons.email),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: pass,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                  prefixIcon: const Icon(Icons.password),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: pass,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    prefixIcon: const Icon(Icons.password),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              OutlinedButton(
-                onPressed: () => _login(context),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                  child: Text('Login', style: TextStyle(fontSize: 20)),
+                const SizedBox(height: 20),
+                OutlinedButton(
+                  onPressed: () => _login(context),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                    child: Text('Login', style: TextStyle(fontSize: 20)),
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              TextButton(
-                  onPressed: () => Navigator.of(context).pushNamed('/signup'),
-                  child: const Text('Not registered? Signup here'))
-            ],
+                const SizedBox(height: 10),
+                TextButton(
+                    onPressed: () => Navigator.of(context).pushNamed('/signup'),
+                    child: const Text('Not registered? Signup here'))
+              ],
+            ),
           ),
         ),
       ),

@@ -4,8 +4,8 @@ import 'package:flutter_quill/flutter_quill.dart' hide Text;
 import 'package:susastho/model/news_model.dart';
 
 class Article extends StatelessWidget {
-  NewsModel news;
-  late QuillController controller;
+  final NewsModel news;
+  late final QuillController controller;
   Article({Key? key, required this.news}) : super(key: key) {
     var myJSON = jsonDecode(news.content);
     controller =

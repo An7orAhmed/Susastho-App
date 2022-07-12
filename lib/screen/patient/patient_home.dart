@@ -17,7 +17,19 @@ class PatientHome extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Susastho - সুস্বাস্থ্য"),
-        actions: [IconButton(onPressed: () => _logout(context), icon: const Icon(Icons.logout))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                showAboutDialog(
+                    context: context,
+                    applicationName: "Susastho App",
+                    applicationVersion: "1.0.0",
+                    applicationLegalese: "Developed by Tahsin Islam",
+                    applicationIcon: Image.asset("assets/icon.png", scale: 2.3));
+              },
+              icon: const Icon(Icons.info)),
+          IconButton(onPressed: () => _logout(context), icon: const Icon(Icons.logout))
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -17,7 +17,19 @@ class AdminHome extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Susastho - সুস্বাস্থ্য"),
-        actions: [IconButton(onPressed: () => _logout(context), icon: const Icon(Icons.logout))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                showAboutDialog(
+                    context: context,
+                    applicationName: "Susastho App",
+                    applicationVersion: "1.0.0",
+                    applicationLegalese: "Developed by Tahsin Islam",
+                    applicationIcon: Image.asset("assets/icon.png", scale: 2.3));
+              },
+              icon: const Icon(Icons.info)),
+          IconButton(onPressed: () => _logout(context), icon: const Icon(Icons.logout))
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -106,6 +118,34 @@ class AdminHome extends StatelessWidget {
                         SizedBox(width: 45),
                         Text(
                           "Publish News",
+                          style: TextStyle(fontSize: 20),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              SizedBox(
+                height: 120,
+                width: double.infinity,
+                child: Card(
+                  elevation: 3,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  color: Colors.grey[100],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: InkWell(
+                    splashColor: Colors.blue[100],
+                    onTap: () => Navigator.of(context).pushNamed('/newsAdmin'),
+                    child: Row(
+                      children: const [
+                        SizedBox(width: 15),
+                        Icon(Icons.newspaper, size: 80, color: Colors.redAccent),
+                        SizedBox(width: 45),
+                        Text(
+                          "News List",
                           style: TextStyle(fontSize: 20),
                         )
                       ],

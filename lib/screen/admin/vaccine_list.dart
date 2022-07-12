@@ -4,7 +4,7 @@ import 'package:susastho/model/vaccine.dart';
 import 'package:susastho/widgets/utilities.dart';
 
 class VaccineList extends StatefulWidget {
-  VaccineList({Key? key}) : super(key: key);
+  const VaccineList({Key? key}) : super(key: key);
 
   @override
   State<VaccineList> createState() => _VaccineListState();

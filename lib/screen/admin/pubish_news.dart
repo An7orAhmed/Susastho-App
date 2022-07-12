@@ -9,7 +9,7 @@ class PublishNews extends StatelessWidget {
   PublishNews({Key? key}) : super(key: key);
 
   final _controller = QuillController.basic();
-  var heading = TextEditingController();
+  final heading = TextEditingController();
 
   Future<void> _publishNews(context) async {
     String post = jsonEncode(_controller.document.toDelta().toJson());
@@ -39,6 +39,7 @@ class PublishNews extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Publish News"),
+        actions: [IconButton(onPressed: () => _publishNews(context), icon: const Icon(Icons.upload))],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
@@ -62,17 +63,6 @@ class PublishNews extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 10),
-            Align(
-              alignment: Alignment.center,
-              child: OutlinedButton(
-                onPressed: () => _publishNews(context),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  child: Text("Publish"),
-                ),
-              ),
-            )
           ],
         ),
       ),

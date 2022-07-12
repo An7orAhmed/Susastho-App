@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:susastho/screen/admin/admin_home.dart';
+import 'package:susastho/screen/admin/news_admin.dart';
 import 'package:susastho/screen/admin/patients_list.dart';
 import 'package:susastho/screen/admin/pubish_news.dart';
 import 'package:susastho/screen/admin/vaccine_add.dart';
@@ -20,7 +21,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -55,19 +56,23 @@ class _MyAppState extends State<MyApp> {
               title: 'Susastho - সুস্বাস্থ্য',
               scaffoldMessengerKey: scafKey,
               debugShowCheckedModeBanner: false,
+              themeMode: ThemeMode.system,
+              theme: ThemeData.light(),
+              darkTheme: ThemeData.light(),
               initialRoute: isLoggedIn ? '/' : '/login',
               routes: {
-                '/': (context) => isAdmin ? AdminHome() : PatientHome(),
+                '/': (context) => isAdmin ? const AdminHome() : const PatientHome(),
                 '/login': (context) => Login(),
                 '/signup': (context) => Signup(),
-                '/patientHome': (context) => PatientHome(),
-                '/registration': (context) => Registration(),
-                '/status': (context) => Status(),
-                '/news': (context) => News(),
-                '/adminHome': (context) => AdminHome(),
-                '/patientList': (context) => PatientList(),
-                '/vaccineAdd': (context) => VaccineAdd(),
-                '/vaccineList': (context) => VaccineList(),
+                '/patientHome': (context) => const PatientHome(),
+                '/registration': (context) => const Registration(),
+                '/status': (context) => const Status(),
+                '/news': (context) => const News(),
+                '/newsAdmin': (context) => const NewsAdmin(),
+                '/adminHome': (context) => const AdminHome(),
+                '/patientList': (context) => const PatientList(),
+                '/vaccineAdd': (context) => const VaccineAdd(),
+                '/vaccineList': (context) => const VaccineList(),
                 '/publishNews': (context) => PublishNews(),
               },
             );

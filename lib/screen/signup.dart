@@ -8,15 +8,15 @@ import 'package:susastho/widgets/utilities.dart';
 class Signup extends StatelessWidget {
   Signup({Key? key}) : super(key: key);
 
-  var email = TextEditingController();
-  var pass = TextEditingController();
-  var repass = TextEditingController();
-  var name = TextEditingController();
-  var address = TextEditingController();
-  var phone = TextEditingController();
-  var nid = TextEditingController();
-  var age = TextEditingController();
-  var blood = TextEditingController();
+  final email = TextEditingController();
+  final pass = TextEditingController();
+  final repass = TextEditingController();
+  final name = TextEditingController();
+  final address = TextEditingController();
+  final phone = TextEditingController();
+  final nid = TextEditingController();
+  final age = TextEditingController();
+  final blood = TextEditingController();
 
   Future<void> _signup(context) async {
     if (email.text.isEmpty) {

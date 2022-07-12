@@ -48,7 +48,12 @@ class _PatientDetailsState extends State<PatientDetails> {
                               : vaccineInfo.status == "PENDING"
                                   ? Icons.pending
                                   : Icons.task_alt,
-                          size: 50),
+                          size: 50,
+                          color: vaccineInfo.status == "ENROLL"
+                              ? Colors.amber
+                              : vaccineInfo.status == "PENDING"
+                                  ? Colors.blue
+                                  : Colors.green),
                       title: Text(vaccineInfo.name),
                       subtitle: Text(vaccineInfo.takenDate.split('.')[0]),
                       trailing: ToggleButtons(
