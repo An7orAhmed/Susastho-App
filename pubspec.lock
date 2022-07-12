@@ -325,7 +325,7 @@ packages:
     source: sdk
     version: "0.0.0"
   gallery_saver:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: gallery_saver
       url: "https://pub.dartlang.org"

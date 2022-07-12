@@ -56,10 +56,13 @@ class _StatusState extends State<Status> {
                 children: [
                   Expanded(
                     child: Container(
-                      color: Colors.amberAccent,
+                      color: Colors.amber,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [Text("$enroll", style: const TextStyle(fontSize: 46)), const Text("ENROLL")],
+                        children: [
+                          Text("$enroll", style: const TextStyle(fontSize: 46, color: Colors.white)),
+                          const Text("ENROLL", style: TextStyle(color: Colors.white))
+                        ],
                       ),
                     ),
                   ),
@@ -68,16 +71,22 @@ class _StatusState extends State<Status> {
                       color: Colors.blueAccent,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [Text("$pending", style: const TextStyle(fontSize: 46)), const Text("PENDING")],
+                        children: [
+                          Text("$pending", style: const TextStyle(fontSize: 46, color: Colors.white)),
+                          const Text("PENDING", style: TextStyle(color: Colors.white))
+                        ],
                       ),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      color: Colors.greenAccent,
+                      color: Colors.green[300],
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [Text("$done", style: const TextStyle(fontSize: 46)), const Text("DONE")],
+                        children: [
+                          Text("$done", style: const TextStyle(fontSize: 46, color: Colors.white)),
+                          const Text("DONE", style: TextStyle(color: Colors.white))
+                        ],
                       ),
                     ),
                   ),

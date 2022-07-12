@@ -22,7 +22,7 @@ class AdminHome extends StatelessWidget {
               onPressed: () {
                 showAboutDialog(
                     context: context,
-                    applicationName: "Susastho App",
+                    applicationName: "Susastho",
                     applicationVersion: "1.0.0",
                     applicationLegalese: "Developed by Tahsin Islam",
                     applicationIcon: Image.asset("assets/icon.png", scale: 2.3));
@@ -53,6 +53,7 @@ class AdminHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/patientList'),
                     child: Row(
@@ -81,6 +82,7 @@ class AdminHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/vaccineList'),
                     child: Row(
@@ -109,6 +111,7 @@ class AdminHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/publishNews'),
                     child: Row(
@@ -137,6 +140,7 @@ class AdminHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/newsAdmin'),
                     child: Row(

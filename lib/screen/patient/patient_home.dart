@@ -22,7 +22,7 @@ class PatientHome extends StatelessWidget {
               onPressed: () {
                 showAboutDialog(
                     context: context,
-                    applicationName: "Susastho App",
+                    applicationName: "Susastho",
                     applicationVersion: "1.0.0",
                     applicationLegalese: "Developed by Tahsin Islam",
                     applicationIcon: Image.asset("assets/icon.png", scale: 2.3));
@@ -53,6 +53,7 @@ class PatientHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/registration'),
                     child: Row(
@@ -81,6 +82,7 @@ class PatientHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/status'),
                     child: Row(
@@ -109,6 +111,7 @@ class PatientHome extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    borderRadius: BorderRadius.circular(20.0),
                     splashColor: Colors.blue[100],
                     onTap: () => Navigator.of(context).pushNamed('/news'),
                     child: Row(

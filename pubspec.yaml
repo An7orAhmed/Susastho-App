@@ -38,7 +38,6 @@ dependencies:
   cloud_firestore: ^3.2.1
   firebase_core: ^1.19.1
   flutter_quill: ^5.0.4
-  gallery_saver: ^2.3.2
 
 dev_dependencies:
   flutter_test:
