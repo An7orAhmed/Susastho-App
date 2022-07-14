@@ -24,7 +24,7 @@ class AdminHome extends StatelessWidget {
                     context: context,
                     applicationName: "Susastho",
                     applicationVersion: "1.0.0",
-                    applicationLegalese: "Developed by Tahsin Islam",
+                    applicationLegalese: "Developed by Engineering Project Solution(EPS)",
                     applicationIcon: Image.asset("assets/icon.png", scale: 2.3));
               },
               icon: const Icon(Icons.info)),
