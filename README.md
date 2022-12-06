@@ -2,4 +2,4 @@
 
 A new Flutter project.
 
-[Susastho](https://i.imgur.com/VKJqKsp.png)
+![Susastho](https://i.imgur.com/VKJqKsp.png)
